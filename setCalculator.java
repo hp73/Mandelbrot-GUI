@@ -42,16 +42,14 @@
             z0 = new Complex(real, imaginary);
             z = new Complex(real, imaginary);
 
-            while( t < limit){
+            while( t < limit ){
                 if (z.abs() > 2.0){
                     return t;
-    
                 }
     
                 else{
                     z = z.times(z).plus(z0);
                     ++t;
-    
                 }
             }
 
