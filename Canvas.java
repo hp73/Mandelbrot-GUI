@@ -35,7 +35,6 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    // Final variables
    final private Color colorSelect = new Color(0, 200, 200);
    final private int chunkSize = 50;
-      setupCanvas();
     
 
    
