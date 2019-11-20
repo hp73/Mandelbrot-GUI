@@ -40,24 +40,23 @@ public class Mandelbrot extends JFrame implements ActionListener {
         
         
         
-        // Create "Triangle" Button
+      /*  // Create "Triangle" Button
         increaseButton = new JButton("Increase Limit");
         increaseButton.addActionListener(this);
         increaseButton.getText();
         
-        positionConst.insets = new Insets(10, 10, 10, 10);
-        positionConst.gridx = 0;
-        positionConst.gridy = 1;
-        positionConst.insets = new Insets(5, 5, 5, 5);
+        positionConst.gridx = 10;
+        positionConst.gridy = 10;
+        positionConst.insets = new Insets(0, 0, 0, 0);
         add(increaseButton, positionConst);
         
+        */
         
-        // Create "Triangle" Button
+       /* // Create "Triangle" Button
         decreaseButton = new JButton("Decrease Limit");
         decreaseButton.addActionListener(this);
         decreaseButton.getText();
       
-        positionConst.insets = new Insets(10, 10, 10, 10);
         positionConst.gridx = 0;
         positionConst.gridy = 2;
         positionConst.insets = new Insets(5, 5, 5, 5);
@@ -69,7 +68,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         resetButton.addActionListener(this);
         resetButton.getText();
         
-        positionConst.insets = new Insets(10, 10, 10, 10);
         positionConst.gridx = 0;
         positionConst.gridy = 3;
         positionConst.insets = new Insets(5, 5, 5, 5);
@@ -81,7 +79,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         saveImageButton.addActionListener(this);
         saveImageButton.getText();
         
-        positionConst.insets = new Insets(10, 10, 10, 10);
         positionConst.gridx = 1;
         positionConst.gridy = 1;
         positionConst.insets = new Insets(5, 5, 5, 5);
@@ -92,8 +89,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         savePosButton = new JButton("Save Position");
         savePosButton.addActionListener(this);
         savePosButton.getText();
-        
-        positionConst.insets = new Insets(10, 10, 10, 10);
+
         positionConst.gridx = 1;
         positionConst.gridy = 2;
         positionConst.insets = new Insets(5, 5, 5, 5);
@@ -105,7 +101,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         loadButton.addActionListener(this);
         loadButton.getText();
         
-        positionConst.insets = new Insets(10, 10, 10, 10);
         positionConst.gridx = 1;
         positionConst.gridy = 3;
         positionConst.insets = new Insets(5, 5, 5, 5);
@@ -117,11 +112,11 @@ public class Mandelbrot extends JFrame implements ActionListener {
         gradientButton.addActionListener(this);
         gradientButton.getText();
         
-        positionConst.insets = new Insets(10, 10, 10, 10);
         positionConst.gridx = 1;
         positionConst.gridy = 4;
         positionConst.insets = new Insets(5, 5, 5, 5);
         add(gradientButton, positionConst);
+        */
     }
 
     
