@@ -7,6 +7,7 @@ public class Mandelbrot extends JFrame {
     private Canvas canvas;
    
     public Mandelbrot() {
+
         
         // Use a GridBagLayout
         setLayout(new GridBagLayout());
@@ -30,6 +31,8 @@ public class Mandelbrot extends JFrame {
         add(canvas, positionConst);
         
     }
+
+
     
     public static void main(String[] args) {
         

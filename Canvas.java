@@ -30,33 +30,14 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    private BufferedImage image;
    private Graphics2D gImg;
    private double scale;
+   private setCalculator setC;
+   private double newLim;
    
    // Final variables
    final private Color colorSelect = new Color(0, 200, 200);
    final private int chunkSize = 50;
-   
-   /*
-    * Default constructor for the canvas. Sets the scale to 1.
-    * @author Liz Matthews
-    * 
-    */   
-   public Canvas() {
-      super();
-      
-      scale = 1;
-      
-     
-      
-      setup();
-      
-      setupCanvas();
-      
-      // Start the first render
-      resetRender();
-      
-      
-      
-   }
+    
+
    
    /*
     * Scaled constructor for the canvas. Sets the scale to the parameter passed in.
@@ -68,6 +49,8 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       super();
       
       this.scale = scale;
+      setC = new setCalculator();
+      newLim = setC.limit;
       
       setup();
       
@@ -75,6 +58,8 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
       // Start the first render
       resetRender();
+
+
       
       
    }
@@ -309,14 +294,30 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       if (!doneRendering) {
          
          // Iterate over each pixel in the render chunk
+         //need na if else here to return black or put it in rainbow if it hiss the limit
          for(int x = renderX; x < renderX + chunkSize; x++) {
              for(int y = renderY; y < renderY + chunkSize; y++) {
                // Get the mandelbrot limit for that x/y
                // ???
+
+               double xPercent = ((double)x)/width;
+               double yPercent = ((double)y)/height;
+
+               //c = the mandelbrot getT value 
+               int newT = (int)setC.spillTheT(xPercent,yPercent);
+               int c = (int)(newT / newLim * 255);
                
+
+               if (newT >= newLim){
+                  color = new Color(0,0,0);
+               }
+               else{
+                  color = new Color(c,c,c);
+               }
+                              
                
                // Set the pixel in the image to the appropriate color
-               image.setRGB(x, y, Color.BLACK.getRGB());
+               image.setRGB(x, y, color.getRGB());
              }
          }
          
