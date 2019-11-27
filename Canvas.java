@@ -98,7 +98,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
       gImg = image.createGraphics();
       
-      
+
    }
    
    /*
