@@ -156,6 +156,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         System.out.println("Edit Gradient");
     }
     
+    
    }
 
     
