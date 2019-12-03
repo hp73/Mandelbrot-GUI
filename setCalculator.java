@@ -17,7 +17,7 @@
         final static int DEFUALT_LIMIT = 32;
 
 
-        public setCalculator() {
+        public  setCalculator() {
 
             xMax = DEFAULT_XMAX;
             xMin = DEFAULT_XMIN;
@@ -28,6 +28,28 @@
         }
 
 
+        //change the minimum and maximum values within the set calculator
+        // the top left and bottom right pixels need to be translated to their set coordinates
+        // the min/max x/y need to be set from those points
+        // The top left and bottom right can be obtained from the dragged rectangle, 
+        //which is constantly updated for you. 
+        public void dragZoom( double minXPercent, double minYPercent, double maxXPercent, double maxYPercent){
+           
+            
+            double newXMax = maxXPercent * (xMax - xMin) + xMin;
+            double newXMin = minXPercent * (xMax - xMin) + xMin;
+            double newYMax = maxYPercent * (yMax - yMin) + yMin;
+            double newYMin = minYPercent * (yMax - yMin) + yMin;
+            
+
+            xMax = newXMax;
+            xMin = newXMin;
+            yMax = newYMax;
+            yMin = newYMin;
+            
+
+
+        }
 
         public int spillTheT( double xPercentage, double yPercentage){
             Complex z0;
@@ -57,6 +79,8 @@
 
 
         }
+
+         
 
 
 
