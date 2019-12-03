@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import com.apple.eawt.ApplicationListener;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -14,9 +17,39 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton loadButton;
     private JButton gradientButton;
     private JComboBox setList;
+
+
+
+
+
    
     public Mandelbrot() {
 
+        //Action Listeners
+
+ /*   ActionListener increaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("increase limit");
+        }
+    };
+    ActionListener decreaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Decrease Limit");
+        }
+    };
+*/
+    ActionListener reset = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Reset");
+            dispose();
+        }
+    };
+/*    ActionListener saveImage = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("save image");
+        }
+    };
+*/
         
         // Use a GridBagLayout
         setLayout(new GridBagLayout());
@@ -64,7 +97,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Reset" Button
         resetButton = new JButton("Reset");
-        resetButton.addActionListener(this);
+        resetButton.addActionListener(reset);
         resetButton.getText();
 
         positionConst.gridx = 2;
