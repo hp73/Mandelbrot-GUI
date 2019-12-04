@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import com.apple.eawt.ApplicationListener;
+//import com.apple.eawt.ApplicationListener;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -42,6 +42,10 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("Reset");
             dispose();
+            Mandelbrot appFrame = new Mandelbrot();  
+            appFrame.setVisible(true);
+              
+
         }
     };
 /*    ActionListener saveImage = new ActionListener(){ 
@@ -147,14 +151,14 @@ public class Mandelbrot extends JFrame implements ActionListener {
          // Create Julia/Mandelbrot Combo Box
         String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
-        JComboBox setList = new JComboBox(setStrings);
+        /*JComboBox setList = new JComboBox(setStrings);
         setList.addActionListener(this);
         setList.setSelectedIndex(0);
         
         positionConst.gridx = 3;
         positionConst.gridy = 1;
         add(setList, positionConst);
-        
+        */
     }
 
     
