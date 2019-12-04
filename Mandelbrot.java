@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
+import javax.imageio.ImageIO;
 
 public class Mandelbrot extends JFrame implements ActionListener {
     
@@ -43,9 +44,12 @@ public class Mandelbrot extends JFrame implements ActionListener {
     ActionListener reset = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("Reset");
+
             dispose();
             Mandelbrot appFrame = new Mandelbrot();  
             appFrame.setVisible(true);
+            //resetRender();
+
               
 
         }
@@ -55,7 +59,12 @@ public class Mandelbrot extends JFrame implements ActionListener {
             System.out.println("save image");
 
             BufferedImage mandelbrotImage = new BufferedImage(Canvas.width, Canvas.height, BufferedImage.TYPE_INT_ARGB);
-
+            try {
+                ImageIO.write(mandelbrotImage, "jpg", new File("mandelbrotImage"));
+            } catch (Exception b) {
+                // TODO Auto-generated catch block
+                System.out.println("error");
+            }
 
         }
     };
