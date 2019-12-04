@@ -1,5 +1,7 @@
 import javax.swing.*;
 
+//import com.apple.eawt.ApplicationListener;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -20,6 +22,8 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JComboBox setList;
     private JFileChooser fc;
 
+
+
    
     public Mandelbrot() {
 
@@ -38,29 +42,32 @@ public class Mandelbrot extends JFrame implements ActionListener {
 */
 
    ActionListener saveImage = new ActionListener(){ 
-    public void actionPerformed(ActionEvent e){
-        System.out.println("save image");
+        public void actionPerformed(ActionEvent e){
+            System.out.println("save image");
 
-        File cool;
+            File cool;
 
-        JFileChooser fc = new JFileChooser();
-        int r = fc.showSaveDialog(null); 
+            JFileChooser fc = new JFileChooser();
+            int r = fc.showSaveDialog(null); 
 
-        if (r == JFileChooser.APPROVE_OPTION){
-            // the path to put into imageIO
-            cool =  fc.getSelectedFile();
+            if (r == JFileChooser.APPROVE_OPTION){
+                // the path to put into imageIO
+                cool =  fc.getSelectedFile();
 
-            try {
-                ImageIO.write(canvas.getIMG(), "png", cool);
-            } catch (Exception b) {
-                // TODO Auto-generated catch block
-                System.out.println("error");
-            }
-        } 
-        
+                try {
+                    ImageIO.write(canvas.getIMG(), "png", cool);
+                } catch (Exception b) {
+                    // TODO Auto-generated catch block
+                    System.out.println("error");
+                }
+            } 
 
-    }
-};
+
+// put into method in Canvas
+            
+
+        }
+    };
 
         
         // Use a GridBagLayout
@@ -157,17 +164,15 @@ public class Mandelbrot extends JFrame implements ActionListener {
         add(gradientButton, positionConst);
         
          // Create Julia/Mandelbrot Combo Box
-        String[] setStrings = {"Mandelbrot Set", "Julia Set"};
+         String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
-        JComboBox setList = new JComboBox<String>(setStrings);
-        setList.addActionListener(this);
-        setList.setSelectedIndex(0);
-        
-        positionConst.gridx = 3;
-        positionConst.gridy = 1;
-        add(setList, positionConst);
-        
-        
+         JComboBox setList = new JComboBox<String>(setStrings);
+         setList.addActionListener(this);
+         setList.setSelectedIndex(0);
+         
+         positionConst.gridx = 3;
+         positionConst.gridy = 1;
+         add(setList, positionConst);
     }
 
     

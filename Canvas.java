@@ -168,6 +168,17 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       updateRectangle();
       
       // Resize the viewing area here
+      double minX = drawRect.getX();
+      double minY = drawRect.getY();
+      double maxX = drawRect.getX() + drawRect.getWidth();
+      double maxY = drawRect.getY() + drawRect.getHeight();
+
+      double minXPercent = ((double) minX) / width;
+      double minYPercent = ((double) minY) / height;
+      double maxXPercent = ((double) maxX) / width;
+      double maxYPercent = ((double) maxY) / height;
+
+      setC.dragZoom(minXPercent, minYPercent, maxXPercent, maxYPercent );
       
       // Free up the draw variables
       drawRect = null;
@@ -341,16 +352,14 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
 
+
    public BufferedImage getIMG(){
       return image;
    }
-
    public int getWidth(){
       return width;
    }
-   
    public int getHeight(){
       return height;
    }
-   
 }
