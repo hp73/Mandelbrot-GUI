@@ -54,7 +54,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
 
-            BufferedImage mandelbrotImage = new BufferedImage(c.drawRect.getWidth(), c.drawRect.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            BufferedImage mandelbrotImage = new BufferedImage(Canvas.width, Canvas.height, BufferedImage.TYPE_INT_ARGB);
 
 
         }
