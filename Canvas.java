@@ -26,7 +26,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    private int width, height;
    private Point posStart;
    private Point posEnd;   
-   private Rectangle drawRect;
+   public Rectangle drawRect;
    private BufferedImage image;
    private Graphics2D gImg;
    private double scale;
