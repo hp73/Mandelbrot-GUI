@@ -112,16 +112,16 @@ public class Mandelbrot extends JFrame implements ActionListener {
         add(gradientButton, positionConst);
         
          // Create Julia/Mandelbrot Combo Box
-        /*String[] setStrings = {"Mandelbrot Set", "Julia Set"};
+        String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
-        JComboBox setList = new JComboBox(setStrings);
+        JComboBox setList = new JComboBox<String>(setStrings);
         setList.addActionListener(this);
         setList.setSelectedIndex(0);
         
         positionConst.gridx = 3;
         positionConst.gridy = 1;
         add(setList, positionConst);
-        */
+        
         
     }
 
