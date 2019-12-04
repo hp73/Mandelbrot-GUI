@@ -20,6 +20,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton loadButton;
     private JButton gradientButton;
     private JComboBox setList;
+    private JFileChooser fc;
 
 
 
@@ -46,9 +47,27 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
 
-            BufferedImage mandelbrotImage = new BufferedImage(Canvas.width, Canvas.height, BufferedImage.TYPE_INT_ARGB);
+            JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            int r = fc.showSaveDialog(null); 
+
+            /*int returnVal = fc.showSaveDialog(FileChooserDemo.this);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would save the file.
+                log.append("Saving: " + file.getName() + "." + newline);
+            } else {
+                log.append("Save command cancelled by user." + newline);
+            }
+            log.setCaretPosition(log.getDocument().getLength());
+             */
+
+
+            BufferedImage image = new BufferedImage(Canvas.width, Canvas.height, BufferedImage.TYPE_INT_ARGB);
+
+
+
             try {
-                ImageIO.write(mandelbrotImage, "jpg", new File("mandelbrotImage"));
+                ImageIO.write(image, "png", new File("image"));
             } catch (Exception b) {
                 // TODO Auto-generated catch block
                 System.out.println("error");
