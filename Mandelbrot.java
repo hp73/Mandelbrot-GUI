@@ -48,39 +48,26 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
 
-            l = new JLabel("no file selected"); 
+            File cool;
 
-
-            JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            JFileChooser fc = new JFileChooser();
             int r = fc.showSaveDialog(null); 
 
             if (r == JFileChooser.APPROVE_OPTION){
-                l.setText(j.getSelectedFile().getAbsolutePath())
+                // the path to put into imageIO
+                cool =  fc.getSelectedFile();
+
+                try {
+                    ImageIO.write(canvas.getIMG(), "png", cool);
+                } catch (Exception b) {
+                    // TODO Auto-generated catch block
+                    System.out.println("error");
+                }
             } 
 
 
-            /*int returnVal = fc.showSaveDialog(FileChooserDemo.this);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                //This is where a real application would save the file.
-                log.append("Saving: " + file.getName() + "." + newline);
-            } else {
-                log.append("Save command cancelled by user." + newline);
-            }
-            log.setCaretPosition(log.getDocument().getLength());
-             */
-
-
-            BufferedImage image = new BufferedImage(Canvas.width, Canvas.height, BufferedImage.TYPE_INT_ARGB);
-
-
-
-            try {
-                ImageIO.write(image, "png", new File("image"));
-            } catch (Exception b) {
-                // TODO Auto-generated catch block
-                System.out.println("error");
-            }
+// put into method in Canvas
+            
 
         }
     };
@@ -132,7 +119,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Reset" Button
         resetButton = new JButton("Reset");
-        resetButton.addActionListener(reset);
+        resetButton.addActionListener(this);
         resetButton.getText();
 
         positionConst.gridx = 2;

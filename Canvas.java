@@ -340,5 +340,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       paintImmediately(0, 0, width, height);
       
    }
+
+
+   public BufferedImage getIMG(){
+      return image;
+   }
    
 }
