@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
 
 public class Mandelbrot extends JFrame implements ActionListener {
     
@@ -48,12 +50,16 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         }
     };
-/*    ActionListener saveImage = new ActionListener(){ 
+   ActionListener saveImage = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
+
+            BufferedImage mandelbrotImage = new BufferedImage(c.drawRect.getWidth(), c.drawRect.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+
         }
     };
-*/
+
         
         // Use a GridBagLayout
         setLayout(new GridBagLayout());
@@ -111,7 +117,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Save Image" Button
         saveImageButton = new JButton("Save Image");
-        saveImageButton.addActionListener(this);
+        saveImageButton.addActionListener(saveImage);
         saveImageButton.getText();
         
         positionConst.gridx = 0;
