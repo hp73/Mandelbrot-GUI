@@ -41,19 +41,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         }
     };
 */
-    ActionListener reset = new ActionListener(){ 
-        public void actionPerformed(ActionEvent e){
-            System.out.println("Reset");
 
-            dispose();
-            Mandelbrot appFrame = new Mandelbrot();  
-            appFrame.setVisible(true);
-            //resetRender();
-
-              
-
-        }
-    };
    ActionListener saveImage = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
