@@ -27,6 +27,19 @@
             
         }
 
+        public void dragZoom( double minXPercent, double minYPercent, double maxXPercent, double maxYPercent){
+        
+            double newXMax = maxXPercent * (xMax - xMin) + xMin;
+            double newXMin = minXPercent * (xMax - xMin) + xMin;
+            double newYMax = maxYPercent * (yMax - yMin) + yMin;
+            double newYMin = minYPercent * (yMax - yMin) + yMin;
+
+            xMax = newXMax;
+            xMin = newXMin;
+            yMax = newYMax;
+            yMin = newYMin;
+            
+        }
 
 
         public int spillTheT( double xPercentage, double yPercentage){
