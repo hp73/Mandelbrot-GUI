@@ -22,6 +22,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JComboBox setList;
     private JFileChooser fc;
 
+    static JLabel l; 
 
 
 
@@ -47,8 +48,16 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("save image");
 
+            l = new JLabel("no file selected"); 
+
+
             JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
             int r = fc.showSaveDialog(null); 
+
+            if (r == JFileChooser.APPROVE_OPTION){
+                l.setText(j.getSelectedFile().getAbsolutePath())
+            } 
+
 
             /*int returnVal = fc.showSaveDialog(FileChooserDemo.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
