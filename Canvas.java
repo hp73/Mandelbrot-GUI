@@ -176,10 +176,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       double maxX = drawRect.getX() + drawRect.getWidth();
       double maxY = drawRect.getY() + drawRect.getHeight();
 
-      double minXPercent = ((double) minX /drawRect.getWidth());
-      double minYPercent = ((double) minY / drawRect.getHeight());
-      double maxXPercent = ((double) maxX / drawRect.getWidth());
-      double maxYPercent = ((double) maxY / drawRect.getHeight());
+      double minXPercent = ((double) minX) / width;
+      double minYPercent = ((double) minY) / height;
+      double maxXPercent = ((double) maxX) / width;
+      double maxYPercent = ((double) maxY) / height;
 
       setC.dragZoom(minXPercent, minYPercent, maxXPercent, maxYPercent );
 
