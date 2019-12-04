@@ -1,6 +1,12 @@
 import javax.swing.*;
+
+//import com.apple.eawt.ApplicationListener;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class Mandelbrot extends JFrame implements ActionListener {
     
@@ -13,8 +19,55 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton savePosButton;
     private JButton loadButton;
     private JButton gradientButton;
+    private JComboBox setList;
+    private JFileChooser fc;
+
+
+
    
     public Mandelbrot() {
+
+        //Action Listeners
+
+ /*   ActionListener increaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("increase limit");
+        }
+    };
+    ActionListener decreaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Decrease Limit");
+        }
+    };
+*/
+
+   ActionListener saveImage = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("save image");
+
+            File cool;
+
+            JFileChooser fc = new JFileChooser();
+            int r = fc.showSaveDialog(null); 
+
+            if (r == JFileChooser.APPROVE_OPTION){
+                // the path to put into imageIO
+                cool =  fc.getSelectedFile();
+
+                try {
+                    ImageIO.write(canvas.getIMG(), "png", cool);
+                } catch (Exception b) {
+                    // TODO Auto-generated catch block
+                    System.out.println("error");
+                }
+            } 
+
+
+// put into method in Canvas
+            
+
+        }
+    };
 
         
         // Use a GridBagLayout
@@ -42,7 +95,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Increase Limit" Button
         increaseButton = new JButton("Increase Limit");
-        //increaseButton.addActionListener(this);
+        increaseButton.addActionListener(this);
         increaseButton.getText();
         positionConst.gridx = 0;
         positionConst.gridy = 1;
@@ -52,7 +105,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Decrease Limit" Button
         decreaseButton = new JButton("Decrease Limit");
-        //decreaseButton.addActionListener(this);
+        decreaseButton.addActionListener(this);
         decreaseButton.getText();
       
         positionConst.gridx = 1;
@@ -63,7 +116,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Reset" Button
         resetButton = new JButton("Reset");
-        //resetButton.addActionListener(this);
+        resetButton.addActionListener(this);
         resetButton.getText();
 
         positionConst.gridx = 2;
@@ -73,7 +126,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Save Image" Button
         saveImageButton = new JButton("Save Image");
-        //saveImageButton.addActionListener(this);
+        saveImageButton.addActionListener(saveImage);
         saveImageButton.getText();
         
         positionConst.gridx = 0;
@@ -83,7 +136,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         
         // Create "Triangle" Button
         savePosButton = new JButton("Save Position");
-        //savePosButton.addActionListener(this);
+        savePosButton.addActionListener(this);
 
         savePosButton.getText();
         positionConst.gridx = 1;
@@ -93,7 +146,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         
         // Create "Load Position" Button
         loadButton = new JButton("Load Position");
-        //loadButton.addActionListener(this);
+        loadButton.addActionListener(this);
         loadButton.getText();
         
         positionConst.gridx = 2;
@@ -103,15 +156,23 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
         // Create "Edit Gradient" Button
         gradientButton = new JButton("Edit Gradient");
-        //gradientButton.addActionListener(this);
+        gradientButton.addActionListener(this);
         gradientButton.getText();
         
         positionConst.gridx = 3;
         positionConst.gridy = 2;
         add(gradientButton, positionConst);
         
-    
-    
+         // Create Julia/Mandelbrot Combo Box
+         String[] setStrings = {"Mandelbrot Set", "Julia Set"};
+        
+         JComboBox setList = new JComboBox<String>(setStrings);
+         setList.addActionListener(this);
+         setList.setSelectedIndex(0);
+         
+         positionConst.gridx = 3;
+         positionConst.gridy = 1;
+         add(setList, positionConst);
     }
 
     
@@ -145,6 +206,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     if (e.getSource() == gradientButton){
         System.out.println("Edit Gradient");
     }
+    
     
    }
 

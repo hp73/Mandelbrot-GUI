@@ -168,9 +168,6 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       updateRectangle();
       
       // Resize the viewing area here
-// calculate the min and max x and y percentatges much like render() does
-// but you have to do it for four parts
-
       double minX = drawRect.getX();
       double minY = drawRect.getY();
       double maxX = drawRect.getX() + drawRect.getWidth();
@@ -182,12 +179,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       double maxYPercent = ((double) maxY) / height;
 
       setC.dragZoom(minXPercent, minYPercent, maxXPercent, maxYPercent );
-
-
+      
+      // Free up the draw variables
       drawRect = null;
       posStart = null;
       posEnd = null;
-      
       
       // Start the drawing process over again if we're not already rendering.
       if (doneRendering) {
@@ -312,8 +308,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
          //need na if else here to return black or put it in rainbow if it hiss the limit
          for(int x = renderX; x < renderX + chunkSize; x++) {
              for(int y = renderY; y < renderY + chunkSize; y++) {
-               
                // Get the mandelbrot limit for that x/y
+               // ???
+
                double xPercent = ((double)x)/width;
                double yPercent = ((double)y)/height;
 
@@ -354,5 +351,17 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       paintImmediately(0, 0, width, height);
       
    }
+
+
+   public BufferedImage getIMG(){
+      return image;
+   }
    
+
+   public int getWidth(){
+      return width;
+   }
+   public int getHeight(){
+      return height;
+   }
 }
