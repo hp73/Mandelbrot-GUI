@@ -1,6 +1,10 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class Mandelbrot extends JFrame implements ActionListener {
     
@@ -14,8 +18,49 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton loadButton;
     private JButton gradientButton;
     private JComboBox setList;
+    private JFileChooser fc;
+
    
     public Mandelbrot() {
+
+        //Action Listeners
+
+ /*   ActionListener increaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("increase limit");
+        }
+    };
+    ActionListener decreaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Decrease Limit");
+        }
+    };
+*/
+
+   ActionListener saveImage = new ActionListener(){ 
+    public void actionPerformed(ActionEvent e){
+        System.out.println("save image");
+
+        File cool;
+
+        JFileChooser fc = new JFileChooser();
+        int r = fc.showSaveDialog(null); 
+
+        if (r == JFileChooser.APPROVE_OPTION){
+            // the path to put into imageIO
+            cool =  fc.getSelectedFile();
+
+            try {
+                ImageIO.write(canvas.getIMG(), "png", cool);
+            } catch (Exception b) {
+                // TODO Auto-generated catch block
+                System.out.println("error");
+            }
+        } 
+        
+
+    }
+};
 
         
         // Use a GridBagLayout
@@ -74,7 +119,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Save Image" Button
         saveImageButton = new JButton("Save Image");
-        saveImageButton.addActionListener(this);
+        saveImageButton.addActionListener(saveImage);
         saveImageButton.getText();
         
         positionConst.gridx = 0;
