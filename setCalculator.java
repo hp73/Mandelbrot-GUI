@@ -5,15 +5,15 @@
     
     public class setCalculator {
 
-        double xMax;
-        double xMin;
-        double yMax;
-        double yMin;
+        static double xMax;
+        static double xMin;
+        static double yMax;
+        static double yMin;
         final static double DEFAULT_XMAX = 1.0;
         final static double DEFAULT_XMIN = -2.5;
         final static double DEFAULT_YMAX = 1.0;
         final static double DEFAULT_YMIN = -1.0;
-        int limit;
+        static int limit;
         final static int DEFUALT_LIMIT = 32;
 
 
@@ -25,6 +25,17 @@
             yMin = DEFAULT_YMIN;
             limit = DEFUALT_LIMIT;
             
+        }
+
+        public static void resetButton(){
+
+            xMax = DEFAULT_XMAX;
+            xMin = DEFAULT_XMIN;
+            yMax = DEFAULT_YMAX;
+            yMin = DEFAULT_YMIN;
+            limit = DEFUALT_LIMIT;
+
+
         }
 
         public void dragZoom( double minXPercent, double minYPercent, double maxXPercent, double maxYPercent){

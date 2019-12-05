@@ -62,12 +62,21 @@ public class Mandelbrot extends JFrame implements ActionListener {
                 }
             } 
 
-
-// put into method in Canvas
-            
-
         }
     };
+
+    ActionListener reset = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Reset");
+    
+            setCalculator.resetButton();
+            canvas.resetRender();
+
+            }
+    };            
+
+    //put method into canvas
+
 
         
         // Use a GridBagLayout
@@ -116,7 +125,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Reset" Button
         resetButton = new JButton("Reset");
-        resetButton.addActionListener(this);
+        resetButton.addActionListener(reset);
         resetButton.getText();
 
         positionConst.gridx = 2;
