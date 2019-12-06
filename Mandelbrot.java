@@ -100,6 +100,24 @@ public class Mandelbrot extends JFrame implements ActionListener {
         }
     };
     
+    ActionListener editGradient = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Edit Gradient");
+           
+           // Main frame
+        Mandelbrot appFrame2 = new Mandelbrot();                
+        
+        // Show window
+        appFrame2.setVisible(true);
+
+   
+           
+           
+           
+           
+           
+        }
+    };
     
     
     
@@ -193,7 +211,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
         // Create "Edit Gradient" Button
         gradientButton = new JButton("Edit Gradient");
-        gradientButton.addActionListener(this);
+        gradientButton.addActionListener(editGradient);
         gradientButton.getText();
         
         positionConst.gridx = 3;
@@ -224,9 +242,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         System.out.println("Load Position");
     }
     
-    if (e.getSource() == gradientButton){
-        System.out.println("Edit Gradient");
-    }
     
    }
 
