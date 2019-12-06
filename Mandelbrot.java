@@ -28,7 +28,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     public Mandelbrot() {
 
         //Action Listeners
-    @Override
+    
     ActionListener increaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("Increase Limit");
