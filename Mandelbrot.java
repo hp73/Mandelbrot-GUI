@@ -84,16 +84,23 @@ public class Mandelbrot extends JFrame implements ActionListener {
     };            
 
     
-   /*  ActionListener increaseLimit = new ActionListener(){ 
+     ActionListener combo = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Increase Limit");
-            setCalculator.increaseButton();
-            canvas.resetRender();
+            
+            JComboBox cb = (JComboBox)e.getSource();
+            String setName = (String)cb.getSelectedItem();
+            
+            if (setName == "Julia Set"){
+               System.out.println("Julia");
+            }
+            else{
+               System.out.println("Mandel");
+            }
             
         }
     };
     
-    */
+    
     
     
     //put method into canvas
@@ -197,7 +204,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
          String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
          JComboBox comboBox = new JComboBox<String>(setStrings);
-         comboBox.addActionListener(this);
+         comboBox.addActionListener(combo);
          comboBox.setSelectedIndex(0);
          
          positionConst.gridx = 3;
