@@ -11,7 +11,6 @@ import java.util.*;
 import java.awt.Graphics2D;
 
 
-
 public class Rainbow{
     
     private static Rainbow instance;
@@ -20,9 +19,7 @@ public class Rainbow{
     Color[] color;
     Color[] seedcolors;
     
-    // inset setcalc to store limit here
-    
-    int N = DEFAULT_LIMIT;
+
     
     private Color firstColor;
     private Color lastColor;
@@ -72,16 +69,6 @@ public class Rainbow{
         
     }
     
-    // Put the colors in the color array
-    
-    public void addColors(){
-        
-        
-        
-        
-        
-    }
-    
     // returns the seed color given an integer between 0 and N-1
     public Color getSeedColor(int K){
         if(K < 0 || K >= seedColors.length){
@@ -102,13 +89,5 @@ public class Rainbow{
         }
     }  
 
-    public String toString(){
-        String str = "Rainbow /n";
-        str += "Limit:" + this.getN + "/n";
-        return str;
-    }
     
-    
-    
-    
-}
+} 

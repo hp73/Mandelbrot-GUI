@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Mandelbrot extends JFrame implements ActionListener {
     
@@ -57,11 +58,11 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
             JFileChooser fc = new JFileChooser();
             int r = fc.showSaveDialog(null); 
-
+            
+            
             if (r == JFileChooser.APPROVE_OPTION){
                 // the path to put into imageIO
                 cool =  fc.getSelectedFile();
-
                 try {
                     ImageIO.write(canvas.getIMG(), "png", cool);
                 } catch (Exception b) {
