@@ -28,18 +28,24 @@ public class Mandelbrot extends JFrame implements ActionListener {
     public Mandelbrot() {
 
         //Action Listeners
-
- /*   ActionListener increaseLimit = new ActionListener(){ 
+/*
+    ActionListener increaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("increase limit");
+            System.out.println("Increase Limit");
+            setCalculator.increaseButton();
+            canvas.resetRender();
+            
         }
     };
+    
+    
     ActionListener decreaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Decrease Limit");
+            System.out.println("decrease limit");
         }
     };
-*/
+
+    */
 
    ActionListener saveImage = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
@@ -190,10 +196,14 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
     if (e.getSource() == increaseButton){
         System.out.println("increase limit");
+        setCalculator.increaseButton();
+        canvas.resetRender();
     }
     
     if (e.getSource() == decreaseButton){
         System.out.println("decrease limit");
+        setCalculator.decreaseButton();
+        canvas.resetRender();
     }
     
     if (e.getSource() == resetButton){
