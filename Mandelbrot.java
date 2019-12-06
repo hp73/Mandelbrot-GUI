@@ -19,7 +19,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton savePosButton;
     private JButton loadButton;
     private JButton gradientButton;
-    private JComboBox setList;
+    private JComboBox comboBox;
     private JFileChooser fc;
 
 
@@ -83,6 +83,44 @@ public class Mandelbrot extends JFrame implements ActionListener {
             }
     };            
 
+    
+     ActionListener combo = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            
+            JComboBox cb = (JComboBox)e.getSource();
+            String setName = (String)cb.getSelectedItem();
+            
+            if (setName == "Julia Set"){
+               System.out.println("Julia");
+            }
+            else{
+               System.out.println("Mandel");
+            }
+            
+        }
+    };
+    
+    ActionListener editGradient = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Edit Gradient");
+           
+           // Main frame
+        Mandelbrot appFrame2 = new Mandelbrot();                
+        
+        // Show window
+        appFrame2.setVisible(true);
+
+   
+           
+           
+           
+           
+           
+        }
+    };
+    
+    
+    
     //put method into canvas
 
 
@@ -173,7 +211,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
         // Create "Edit Gradient" Button
         gradientButton = new JButton("Edit Gradient");
-        gradientButton.addActionListener(this);
+        gradientButton.addActionListener(editGradient);
         gradientButton.getText();
         
         positionConst.gridx = 3;
@@ -183,13 +221,13 @@ public class Mandelbrot extends JFrame implements ActionListener {
          // Create Julia/Mandelbrot Combo Box
          String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
-         JComboBox setList = new JComboBox<String>(setStrings);
-         setList.addActionListener(this);
-         setList.setSelectedIndex(0);
+         JComboBox comboBox = new JComboBox<String>(setStrings);
+         comboBox.addActionListener(combo);
+         comboBox.setSelectedIndex(0);
          
          positionConst.gridx = 3;
          positionConst.gridy = 1;
-         add(setList, positionConst);
+         add(comboBox, positionConst);
     }
 
     
@@ -204,9 +242,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         System.out.println("Load Position");
     }
     
-    if (e.getSource() == gradientButton){
-        System.out.println("Edit Gradient");
-    }
     
    }
 
