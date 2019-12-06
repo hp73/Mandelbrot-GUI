@@ -19,7 +19,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton savePosButton;
     private JButton loadButton;
     private JButton gradientButton;
-    private JComboBox setList;
+    private JComboBox comboBox;
     private JFileChooser fc;
 
 
@@ -83,6 +83,19 @@ public class Mandelbrot extends JFrame implements ActionListener {
             }
     };            
 
+    
+   /*  ActionListener increaseLimit = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Increase Limit");
+            setCalculator.increaseButton();
+            canvas.resetRender();
+            
+        }
+    };
+    
+    */
+    
+    
     //put method into canvas
 
 
@@ -183,13 +196,13 @@ public class Mandelbrot extends JFrame implements ActionListener {
          // Create Julia/Mandelbrot Combo Box
          String[] setStrings = {"Mandelbrot Set", "Julia Set"};
         
-         JComboBox setList = new JComboBox<String>(setStrings);
-         setList.addActionListener(this);
-         setList.setSelectedIndex(0);
+         JComboBox comboBox = new JComboBox<String>(setStrings);
+         comboBox.addActionListener(this);
+         comboBox.setSelectedIndex(0);
          
          positionConst.gridx = 3;
          positionConst.gridy = 1;
-         add(setList, positionConst);
+         add(comboBox, positionConst);
     }
 
     
