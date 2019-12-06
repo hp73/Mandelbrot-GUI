@@ -40,22 +40,12 @@
         }
         
         public static void increaseButton(){
-
-            xMax = DEFAULT_XMAX;
-            xMin = DEFAULT_XMIN;
-            yMax = DEFAULT_YMAX;
-            yMin = DEFAULT_YMIN;
             limit = limit *2;
             System.out.println(limit);
 
         }
         
         public static void decreaseButton(){
-
-            xMax = DEFAULT_XMAX;
-            xMin = DEFAULT_XMIN;
-            yMax = DEFAULT_YMAX;
-            yMin = DEFAULT_YMIN;
             if (limit > 32){
                 limit = limit / 2;
             }
