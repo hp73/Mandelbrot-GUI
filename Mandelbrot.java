@@ -28,18 +28,26 @@ public class Mandelbrot extends JFrame implements ActionListener {
     public Mandelbrot() {
 
         //Action Listeners
-
- /*   ActionListener increaseLimit = new ActionListener(){ 
+    
+    ActionListener increaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("increase limit");
+            System.out.println("Increase Limit");
+            setCalculator.increaseButton();
+            canvas.resetRender();
+            
         }
     };
+    
+    
     ActionListener decreaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Decrease Limit");
+            System.out.println("decrease limit");
+            setCalculator.decreaseButton();
+            canvas.resetRender();
         }
     };
-*/
+
+    
 
    ActionListener saveImage = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
@@ -104,7 +112,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Increase Limit" Button
         increaseButton = new JButton("Increase Limit");
-        increaseButton.addActionListener(this);
+        increaseButton.addActionListener(increaseLimit);
         increaseButton.getText();
         positionConst.gridx = 0;
         positionConst.gridy = 1;
@@ -114,7 +122,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
         // Create "Decrease Limit" Button
         decreaseButton = new JButton("Decrease Limit");
-        decreaseButton.addActionListener(this);
+        decreaseButton.addActionListener(decreaseLimit);
         decreaseButton.getText();
       
         positionConst.gridx = 1;
@@ -187,23 +195,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
     @Override
    public void actionPerformed(ActionEvent e){
-    
-    if (e.getSource() == increaseButton){
-        System.out.println("increase limit");
-    }
-    
-    if (e.getSource() == decreaseButton){
-        System.out.println("decrease limit");
-    }
-    
-    if (e.getSource() == resetButton){
-        System.out.println("reset");
-    }
-    
-    if (e.getSource() == saveImageButton){
-        System.out.println("save image");
-    }
-    
+ 
     if (e.getSource() == savePosButton){
         System.out.println("save position");
     }
@@ -215,7 +207,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
     if (e.getSource() == gradientButton){
         System.out.println("Edit Gradient");
     }
-    
     
    }
 
