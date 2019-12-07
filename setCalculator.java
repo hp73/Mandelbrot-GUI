@@ -34,21 +34,15 @@
             yMax = DEFAULT_YMAX;
             yMin = DEFAULT_YMIN;
             limit = DEFUALT_LIMIT;
-            System.out.println(limit);
 
 
         }
-        
-        /*
-         *public static void increaseButton(){
-            limit = limit *2;
-            r.setLim()
-            System.out.println(limit);
-            
-        }
-        */
-        
-        
+
+        public void setLimit(int limit){
+            this.limit = limit;
+            System.out.println("Set Calc " + limit);
+    }
+    
         public static void decreaseButton(){
             if (limit > 32){
                 limit = limit / 2;

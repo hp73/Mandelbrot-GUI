@@ -43,10 +43,20 @@ public class Mandelbrot extends JFrame implements ActionListener {
     ActionListener decreaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("decrease limit");
-            setCalculator.decreaseButton();
+            canvas.decreaseLimit();
             canvas.resetRender();
         }
     };
+    
+    ActionListener reset = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Reset");
+            canvas.resetLimit();
+            setCalculator.resetButton();
+            canvas.resetRender();
+
+            }
+    };    
 
     
 
@@ -72,17 +82,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
             } 
 
         }
-    };
-
-    ActionListener reset = new ActionListener(){ 
-        public void actionPerformed(ActionEvent e){
-            System.out.println("Reset");
-    
-            setCalculator.resetButton();
-            canvas.resetRender();
-
-            }
-    };            
+    };        
 
     
      ActionListener combo = new ActionListener(){ 

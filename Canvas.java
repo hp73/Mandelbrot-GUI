@@ -46,10 +46,30 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    */
    
    public void increaseLimit(){
-      setC.limit = 64;
-      r.setLimit(64);
-      System.out.println(setC.limit);
+      newLim = newLim *2;
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
    }
+   
+   public void decreaseLimit(){
+      if (newLim > 32){
+                newLim = newLim / 2;
+            }
+            else{
+                newLim = 32;
+            } 
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
+      
+   }
+   
+   
+   public void resetLimit(){
+      newLim = 32;
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
+   }
+   
    
    /*
     * Scaled constructor for the canvas. Sets the scale to the parameter passed in.
