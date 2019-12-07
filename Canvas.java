@@ -31,6 +31,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    private Graphics2D gImg;
    private double scale;
    private setCalculator setC;
+   public static String setName = "Mandelbrot Set";
    private double newLim;
    private Rainbow r = Rainbow.getInstance((int)newLim);
    
@@ -126,8 +127,15 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     */
    public void setupCanvas() {
       // Solid dimensions
+      double rectRatio;
       width = (int)(350 * scale);
-      height = (int)(width * (2 / 3.5));
+      if(setName == "Julia Set"){
+         rectRatio = 1.0;
+      }
+      else{
+         rectRatio = (2/3.5);
+      }
+      height = (int)(width * (rectRatio));
       
       // Image which is drawn upon
       image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -262,8 +270,15 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       int top = (int)Math.min(posStart.getY(), posEnd.getY());
       
       // Calculate Y-value based on x and ratio
+      double rectRatio;
       distX = Math.abs(width);
-      distY = (int)(distX * (2 / 3.5)); 
+      if(setName=="Julia Set"){
+         rectRatio=1.0;
+      }
+      else{
+         rectRatio = (2/3.5);
+      }
+      distY = (int)(distX * (rectRatio)); 
       
       // Set up rectangle to the correct four corners
       drawRect.setLocation(left, top);
@@ -298,6 +313,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       // Re-draw the panel
       repaint();
 
+   }
+
+   public void setSetName(String setName){
+      this.setName = setName;
+      setC.changeSet(setName);
    }
    
    /*

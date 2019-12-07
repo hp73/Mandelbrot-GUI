@@ -22,6 +22,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton gradientButton;
     private JComboBox comboBox;
     private JFileChooser fc;
+    private String setName = "Mandelbrot Set";
 
 
 
@@ -52,7 +53,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("Reset");
             canvas.resetLimit();
-            setCalculator.resetButton();
+            setCalculator.changeSet(setName);
             canvas.resetRender();
 
             }
@@ -89,8 +90,10 @@ public class Mandelbrot extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e){
             
             JComboBox cb = (JComboBox)e.getSource();
-            String setName = (String)cb.getSelectedItem();
-            
+            setName = (String)cb.getSelectedItem();
+            setCalculator.changeSet(setName);
+            canvas.setSetName(setName);
+            canvas.resetRender();
         }
     };
     
@@ -103,7 +106,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
             
             canvas.setGradient(gradientName);
             canvas.resetRender();
-      
+            
         }
     };
     
