@@ -32,12 +32,45 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    private double scale;
    private setCalculator setC;
    private double newLim;
+   private Rainbow r = Rainbow.getInstance((int)newLim);
    
    // Final variables
    final private Color colorSelect = new Color(0, 200, 200);
    final private int chunkSize = 50;
     
-
+    // SetGradient
+   
+   public void setGradient(String gradientName){
+      r.setGradient(gradientName);
+   }
+   
+   //Increase Limit
+   public void increaseLimit(){
+      newLim = newLim *2;
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
+   }
+   
+   //Decrease Limit
+   public void decreaseLimit(){
+      if (newLim > 32){
+                newLim = newLim / 2;
+            }
+            else{
+                newLim = 32;
+            } 
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
+      
+   }
+   
+   //Reset Limit
+   public void resetLimit(){
+      newLim = 32;
+      r.setLimit((int)newLim);
+      setC.setLimit((int)newLim);
+   }
+   
    
    /*
     * Scaled constructor for the canvas. Sets the scale to the parameter passed in.
@@ -63,6 +96,8 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
       
    }
+   
+  
    
    /*
     * Method to set up certain variables. Kept separate from the constructor so that setupCanvas and resetRender can be used elsewhere.
@@ -304,6 +339,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       // If we're not done with the entire image...
       if (!doneRendering) {
          
+         r.createGradient((int)newLim);
+      
+         
          // Iterate over each pixel in the render chunk
          //need na if else here to return black or put it in rainbow if it hiss the limit
          for(int x = renderX; x < renderX + chunkSize; x++) {
@@ -315,7 +353,8 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
                double yPercent = ((double)y)/height;
 
                //c = the mandelbrot getT value 
-               int newT = (int)setC.spillTheT(xPercent,yPercent);
+              
+              /* int newT = (int)setC.spillTheT(xPercent,yPercent);
                int c = (int)(newT / newLim * 255);
                
 
@@ -325,7 +364,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
                else{
                   color = new Color(c,c,c);
                }
-                              
+                     */
+              
+              int t = setC.spillTheT(xPercent,yPercent);
+              color = r.getColor(t);
                
                // Set the pixel in the image to the appropriate color
                image.setRGB(x, y, color.getRGB());

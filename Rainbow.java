@@ -5,89 +5,81 @@
  * @version 1.0
  *
  */
-
+import javax.swing.*;
+import java.awt.*;
 import java.awt.Color;
 import java.util.*;
 import java.awt.Graphics2D;
 
 
-public class Rainbow{
+public class Rainbow extends JComponent{
     
     private static Rainbow instance;
     
+    Color[] colors;
+    Color[] seeds = {Color.RED, Color.ORANGE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.BLUE, Color.MAGENTA};;
+    int limit;
+    int index; 
+    
+    
     // Instance Variables
-    Color[] color;
-    Color[] seedcolors;
     
+    public void setLimit(int limit){
+        this.limit = limit;
+        System.out.print("Rainbow " + limit);
+    }
+    
+    
+    public void setGradient(String gradient){
+      if (gradient.equals("Rainbow")){
+        seeds = new Color[] {Color.RED, Color.ORANGE, Color.YELLOW, Color.ORANGE, Color.GREEN, Color.BLUE,
+                       Color.MAGENTA};
+      }
+      if (gradient.equals("GreyScale")){
+        seeds = new Color[] {Color.WHITE, Color.BLACK};
+      }
+      if (gradient.equals("GreenScale")){
+        seeds = new Color[] {Color.GREEN, Color.BLACK};
+      }
+    }
 
-    
-    private Color firstColor;
-    private Color lastColor;
-    private int startIndex;
-    private int endIndex;
-    
-    private double redStep;
-    private double blueStep;
-    private double greenStep;
-    private double seedStep;
-    
-    public static Rainbow getInstance(){
+    public static Rainbow getInstance(int n){
         if (instance == null){
-            instance = new Rainbow();
+            instance = new Rainbow(n);
         }
         return instance;
     }
     
-    // Constructors
-    
-    private Rainbow(){
-        seedcolors = Color[6];
-        colors = new Color[N];
-        startIndex = 0;
-    }
-    
-    // Adding each seed color to the array
-    
-    public void addSeedColors(){
-        seedColors[0] = Color.RED;
-        seedColors[1] = Color.ORANGE;
-        seedColors[2] = Color.YELLOW;
-        seedColors[3] = Color.GREEN;
-        seedColors[4] = Color.BLUE;
-        seedColors[5] = Color.MAGENTA; 
-    }
-    
-    // Put the seed colors in the color array
-    
-    public void seedPosition(){
-        colors[0] = seedColors[0];
-        colors[N-1] = seedColors[seedColors.length -1];
-        seedStep = N / (seedColors.length - 1);
-        for (int i = 1; i < seedColors.length; i++){
-            colors[(int)(seedStep*1)] = getSeedColor(1);
+    public void createGradient(int limit){
+        this.limit = limit;
+        colors = new Color[limit];
+        double numSeeds = seeds.length;
+        double numSpaces = (int)((limit - 1)/(numSeeds -1));
+        
+        for (int i =0; i < limit; i++){
+            Color startColor = seeds[(int)(i / numSpaces)];
+            Color endColor = seeds[Math.min((int)(i / numSpaces) + 1, (seeds.length -1))];
+            double percent = (i % ((int) numSpaces)) / (numSpaces);
+            int r = (int) (percent * (endColor.getRed() - startColor.getRed()) + startColor.getRed());
+            int b = (int) (percent * (endColor.getBlue() - startColor.getBlue()) + startColor.getBlue());
+            int g = (int) (percent * (endColor.getGreen() - startColor.getGreen()) + startColor.getGreen());
+            colors[i] = new Color(r, g, b);
         }
         
     }
     
-    // returns the seed color given an integer between 0 and N-1
-    public Color getSeedColor(int K){
-        if(K < 0 || K >= seedColors.length){
-            return null;
+    public Color getColor(int index){
+        if (index == limit){
+            return Color.BLACK;
         }
         else{
-            return seedColors[K];
+            return colors[index];
         }
     }
     
-    // returns the color given an integer between 0 and N-1
-    public Color getColor(int K){
-        if(K < 0 || K >= N){
-            return null;
-        }
-        else{
-            return colors[K];
-        }
-    }  
-
     
-} 
+    private Rainbow(int n){
+        createGradient(n);
+        
+    }
+}
