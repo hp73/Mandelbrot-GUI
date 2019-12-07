@@ -17,9 +17,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
     private JButton decreaseButton;
     private JButton resetButton;
     private JButton saveImageButton;
-    private JButton savePosButton;
-    private JButton loadButton;
-    private JButton gradientButton;
     private JComboBox comboBox;
     private JFileChooser fc;
     private String setName = "Mandelbrot Set";
@@ -213,36 +210,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
         add(saveImageButton, positionConst);
         
         
-        // Create "Triangle" Button
-        savePosButton = new JButton("Save Position");
-        savePosButton.addActionListener(this);
-
-        savePosButton.getText();
-        positionConst.gridx = 1;
-        positionConst.gridy = 2;
-        add(savePosButton, positionConst);
-        
-        
-        // Create "Load Position" Button
-        loadButton = new JButton("Load Position");
-        loadButton.addActionListener(this);
-        loadButton.getText();
-        
-        positionConst.gridx = 2;
-        positionConst.gridy = 2;
-        add(loadButton, positionConst);
-    
-    /*
-        // Create "Edit Gradient" Button
-        gradientButton = new JButton("Edit Gradient");
-        gradientButton.addActionListener(editGradient);
-        gradientButton.getText();
-        
-        positionConst.gridx = 3;
-        positionConst.gridy = 2;
-        add(gradientButton, positionConst);
-        
-        */
         
          // Create Julia/Mandelbrot Combo Box
          String[] setStrings = {"Mandelbrot Set", "Julia Set"};
