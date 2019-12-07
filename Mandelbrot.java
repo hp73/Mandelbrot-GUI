@@ -33,7 +33,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
     ActionListener increaseLimit = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             System.out.println("Increase Limit");
-            setCalculator.increaseButton();
+            canvas.increaseLimit();
             canvas.resetRender();
             
         }
@@ -101,21 +101,47 @@ public class Mandelbrot extends JFrame implements ActionListener {
         }
     };
     
+    /*
+    ActionListener combo2 = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            
+            JComboBox cb2 = (JComboBox)e.getSource();
+            String gradient = (String)cb2.getSelectedItem();
+            
+            Canvas.setGradient(gradient);
+            
+        }
+    };
+    
+    */
+    
+    
     ActionListener editGradient = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Edit Gradient");
-           
-           // Main frame
-        Mandelbrot appFrame2 = new Mandelbrot();                
-        
-        // Show window
-        appFrame2.setVisible(true);
+        System.out.println("Edit Gradient");
+       
+        UIManager.put("OptionPane.minimumSize",new Dimension(1000,300));    
+        String[] gradients= {"Rainbow Set", "GreyScale", "GreenScale"};
 
-   
-           
-           
-           
-           
+        JComboBox jcd = new JComboBox(gradients);
+
+        JOptionPane jop = new JOptionPane(null,
+                                        JOptionPane.PLAIN_MESSAGE,
+                                        JOptionPane.OK_OPTION,
+                                        null);
+
+        //add combos to JOptionPane
+        jop.add(jcd);
+
+        //create a JDialog and add JOptionPane to it 
+        JDialog diag = new JDialog();
+        diag.getContentPane().add(jop);
+        diag.pack();
+        diag.setVisible(true);
+            
+            
+
+            
            
         }
     };

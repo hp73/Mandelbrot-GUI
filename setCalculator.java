@@ -39,11 +39,15 @@
 
         }
         
-        public static void increaseButton(){
+        /*
+         *public static void increaseButton(){
             limit = limit *2;
+            r.setLim()
             System.out.println(limit);
-
+            
         }
+        */
+        
         
         public static void decreaseButton(){
             if (limit > 32){
