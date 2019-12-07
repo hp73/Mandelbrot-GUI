@@ -267,15 +267,6 @@ public class Mandelbrot extends JFrame implements ActionListener {
     
     @Override
    public void actionPerformed(ActionEvent e){
- 
-    if (e.getSource() == savePosButton){
-        System.out.println("save position");
-    }
-    
-    if (e.getSource() == loadButton){
-        System.out.println("Load Position");
-    }
-    
     
    }
 
