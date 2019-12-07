@@ -84,7 +84,55 @@ public class Mandelbrot extends JFrame implements ActionListener {
         }
     };        
 
+    ActionListener savePos = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Save Pos");
+
+            File cool;
+
+            JFileChooser fc = new JFileChooser();
+            int r = fc.showSaveDialog(null); 
+            
+            
+            if (r == JFileChooser.APPROVE_OPTION){
+                // the path to put into imageIO
+                cool =  fc.getSelectedFile();
+                try {
+                    ImageIO.write(canvas.getIMG(), "png", cool);
+                } catch (Exception b) {
+                    // TODO Auto-generated catch block
+                    System.out.println("error");
+                }
+            } 
+
+        }
+    };        
     
+    
+    ActionListener loadPos = new ActionListener(){ 
+        public void actionPerformed(ActionEvent e){
+            System.out.println("Load Pos");
+
+            File cool;
+
+            JFileChooser fc = new JFileChooser();
+            int r = fc.showSaveDialog(null); 
+            
+            
+            if (r == JFileChooser.APPROVE_OPTION){
+                // the path to put into imageIO
+                cool =  fc.getSelectedFile();
+                try {
+                    ImageIO.write(canvas.getIMG(), "png", cool);
+                } catch (Exception b) {
+                    // TODO Auto-generated catch block
+                    System.out.println("error");
+                }
+            } 
+
+        }
+    };        
+   
      ActionListener combo = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             
@@ -132,19 +180,11 @@ public class Mandelbrot extends JFrame implements ActionListener {
         diag.getContentPane().add(jop);
         diag.pack();
         diag.setVisible(true);
-            
-            
-
-            
            
         }
     };
     
     */
-    
-    //put method into canvas
-
-
         
         // Use a GridBagLayout
         setLayout(new GridBagLayout());
@@ -212,7 +252,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         
         // Create "Triangle" Button
         savePosButton = new JButton("Save Position");
-        savePosButton.addActionListener(this);
+        savePosButton.addActionListener(savePos);
 
         savePosButton.getText();
         positionConst.gridx = 1;
@@ -222,7 +262,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         
         // Create "Load Position" Button
         loadButton = new JButton("Load Position");
-        loadButton.addActionListener(this);
+        loadButton.addActionListener(loadPos);
         loadButton.getText();
         
         positionConst.gridx = 2;
