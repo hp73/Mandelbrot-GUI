@@ -16,32 +16,37 @@
         static int limit;
         final static int DEFUALT_LIMIT = 32;
 
-
         public setCalculator() {
-
             xMax = DEFAULT_XMAX;
             xMin = DEFAULT_XMIN;
             yMax = DEFAULT_YMAX;
             yMin = DEFAULT_YMIN;
             limit = DEFUALT_LIMIT;
-            
+        }
+
+        public static void changeSet(String setName){
+            if(setName.equals("Mandelbrot Set")){
+                xMax = DEFAULT_XMAX;
+                xMin = DEFAULT_XMIN;
+                yMax = DEFAULT_YMAX;
+                yMin = DEFAULT_YMIN;
+            }
+            else{
+                xMin = -1.5;
+                xMax = 1.5;
+                yMin = -1.5;
+                yMax = 1.5;
+            }
         }
 
         public static void resetButton(){
-
-            xMax = DEFAULT_XMAX;
-            xMin = DEFAULT_XMIN;
-            yMax = DEFAULT_YMAX;
-            yMin = DEFAULT_YMIN;
             limit = DEFUALT_LIMIT;
-
-
         }
 
         public void setLimit(int limit){
             this.limit = limit;
             System.out.println("Set Calc " + limit);
-    }
+        }
     
         public static void decreaseButton(){
             if (limit > 32){
@@ -55,7 +60,6 @@
         
 
         public void dragZoom( double minXPercent, double minYPercent, double maxXPercent, double maxYPercent){
-        
             double newXMax = maxXPercent * (xMax - xMin) + xMin;
             double newXMin = minXPercent * (xMax - xMin) + xMin;
             double newYMax = maxYPercent * (yMax - yMin) + yMin;
@@ -65,7 +69,6 @@
             xMin = newXMin;
             yMax = newYMax;
             yMin = newYMin;
-            
         }
 
 
@@ -79,8 +82,14 @@
             real = xPercentage * (xMax - xMin) + xMin;
             imaginary = yPercentage * (yMax - yMin) + yMin;
 
-            z0 = new Complex(real, imaginary);
             z = new Complex(real, imaginary);
+
+            if(Canvas.setName.equals("Mandelbrot Set")){
+                z0 = new Complex(real, imaginary);
+            }
+            else{
+                z0 = new Complex(-0.1,0.65);
+            }            
 
             while( t < limit ){
                 if (z.abs() > 2.0){
