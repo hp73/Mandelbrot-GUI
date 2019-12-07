@@ -86,28 +86,24 @@ public class Mandelbrot extends JFrame implements ActionListener {
 
     ActionListener savePos = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
-            System.out.println("Save Pos");
-
-            File cool;
-
-            JFileChooser fc = new JFileChooser();
-            int r = fc.showSaveDialog(null); 
+            try (
+               OutputStream file = new FileOutputStream("quarks.ser");
+               OutputStream buffer = new BufferedOutputStream(file);
+               ObjectOutput output = new ObjectOutputStream(buffer);
+            ){
+              output.writeObject(canvas.setC);
+             }  
+             catch(IOException ex){
+               logger.log(Level.SEVERE, "Cannot perform output.", ex);
+             }
             
             
-            if (r == JFileChooser.APPROVE_OPTION){
-                // the path to put into imageIO
-                cool =  fc.getSelectedFile();
-                try {
-                    ImageIO.write(canvas.getIMG(), "png", cool);
-                } catch (Exception b) {
-                    // TODO Auto-generated catch block
-                    System.out.println("error");
-                }
-            } 
+            
+            
+             
 
         }
     };        
-    
     
     ActionListener loadPos = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
@@ -123,7 +119,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
                 // the path to put into imageIO
                 cool =  fc.getSelectedFile();
                 try {
-                    ImageIO.write(canvas.getIMG(), "png", cool);
+                    ImageIO.read(canvas.getIMG(), "png", cool);
                 } catch (Exception b) {
                     // TODO Auto-generated catch block
                     System.out.println("error");
@@ -131,14 +127,20 @@ public class Mandelbrot extends JFrame implements ActionListener {
             } 
 
         }
-    };        
+    }; 
+   
+      
+      
+      
+      
+      
+         
    
      ActionListener combo = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             
             JComboBox cb = (JComboBox)e.getSource();
-            String setName = (String)cb.getSelectedItem();
-            
+            String setName = (String)cb.getSelectedItem(); 
         }
     };
     

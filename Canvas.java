@@ -71,6 +71,13 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       setC.setLimit((int)newLim);
    }
    
+   public void saveSetC(){
+      setC.Xmax = Xmax;
+      setC.Xmin = Xmin;
+      setC.Ymax = Ymax;
+      setC.Ymin = Ymin;
+      setC.limit = limit;
+   }
    
    /*
     * Scaled constructor for the canvas. Sets the scale to the parameter passed in.
