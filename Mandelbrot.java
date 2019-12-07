@@ -91,31 +91,25 @@ public class Mandelbrot extends JFrame implements ActionListener {
             JComboBox cb = (JComboBox)e.getSource();
             String setName = (String)cb.getSelectedItem();
             
-            if (setName == "Julia Set"){
-               System.out.println("Julia");
-            }
-            else{
-               System.out.println("Mandel");
-            }
-            
         }
     };
     
-    /*
+    
     ActionListener combo2 = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
             
             JComboBox cb2 = (JComboBox)e.getSource();
-            String gradient = (String)cb2.getSelectedItem();
+            String gradientName = (String)cb2.getSelectedItem();
             
-            Canvas.setGradient(gradient);
-            
+            canvas.setGradient(gradientName);
+            canvas.resetRender();
+      
         }
     };
     
-    */
     
     
+    /*
     ActionListener editGradient = new ActionListener(){ 
         public void actionPerformed(ActionEvent e){
         System.out.println("Edit Gradient");
@@ -146,7 +140,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         }
     };
     
-    
+    */
     
     //put method into canvas
 
@@ -235,7 +229,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         positionConst.gridy = 2;
         add(loadButton, positionConst);
     
-    
+    /*
         // Create "Edit Gradient" Button
         gradientButton = new JButton("Edit Gradient");
         gradientButton.addActionListener(editGradient);
@@ -244,6 +238,8 @@ public class Mandelbrot extends JFrame implements ActionListener {
         positionConst.gridx = 3;
         positionConst.gridy = 2;
         add(gradientButton, positionConst);
+        
+        */
         
          // Create Julia/Mandelbrot Combo Box
          String[] setStrings = {"Mandelbrot Set", "Julia Set"};
@@ -255,6 +251,17 @@ public class Mandelbrot extends JFrame implements ActionListener {
          positionConst.gridx = 3;
          positionConst.gridy = 1;
          add(comboBox, positionConst);
+         
+         // Create Julia/Mandelbrot Combo Box
+         String[] gradientStrings = {"Rainbow", "GreyScale", "GreenScale"};
+        
+         JComboBox comboBox2 = new JComboBox<String>(gradientStrings);
+         comboBox2.addActionListener(combo2);
+         comboBox2.setSelectedIndex(0);
+         
+         positionConst.gridx = 3;
+         positionConst.gridy = 2;
+         add(comboBox2, positionConst);
     }
 
     

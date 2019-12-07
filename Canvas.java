@@ -40,17 +40,18 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     
     // SetGradient
    
-   /* public void setGradient(String gradient){
-      r.setGradient(gradient);
+   public void setGradient(String gradientName){
+      r.setGradient(gradientName);
    }
-   */
    
+   //Increase Limit
    public void increaseLimit(){
       newLim = newLim *2;
       r.setLimit((int)newLim);
       setC.setLimit((int)newLim);
    }
    
+   //Decrease Limit
    public void decreaseLimit(){
       if (newLim > 32){
                 newLim = newLim / 2;
@@ -63,7 +64,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   
+   //Reset Limit
    public void resetLimit(){
       newLim = 32;
       r.setLimit((int)newLim);
