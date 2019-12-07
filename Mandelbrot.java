@@ -253,7 +253,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
          add(comboBox, positionConst);
          
          // Create Julia/Mandelbrot Combo Box
-         String[] gradientStrings = {"Rainbow", "GreyScale", "GreenScale"};
+         String[] gradientStrings = {"Rainbow", "BlueScale", "GreyScale"};
         
          JComboBox comboBox2 = new JComboBox<String>(gradientStrings);
          comboBox2.addActionListener(combo2);

@@ -36,10 +36,10 @@ public class Rainbow extends JComponent{
                        Color.MAGENTA};
       }
       if (gradient.equals("GreyScale")){
-        seeds = new Color[] {Color.WHITE, Color.BLACK};
+        seeds = new Color[] {Color.LIGHT_GRAY, Color.GRAY, Color.DARK_GRAY, Color.BLACK};
       }
-      if (gradient.equals("GreenScale")){
-        seeds = new Color[] {Color.GREEN, Color.BLACK};
+      if (gradient.equals("BlueScale")){
+        seeds = new Color[] {Color.BLUE, Color.CYAN, Color.LIGHT_GRAY};
       }
     }
 
