@@ -1,6 +1,7 @@
 Project #5
 CS 209 Fall 2019
 By Harry Pinkerton and Laurie Jones
+Required to run: JDK 14.01.1 
 
 ===Features===
 --Save Image W/ A File Chooser--
