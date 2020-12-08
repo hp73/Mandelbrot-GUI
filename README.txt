@@ -1,5 +1,5 @@
-Project #5
-CS 209 Fall 2019
+Project #5 - Mandelbrot GUI
+CSCI 209 Fall 2019
 By Harry Pinkerton and Laurie Jones
 Required to run: JDK 14.01.1 
 
