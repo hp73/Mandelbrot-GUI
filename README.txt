@@ -2,6 +2,7 @@ Project #5 - Mandelbrot GUI
 CSCI 209 Fall 2019
 By Harry Pinkerton and Laurie Jones
 Required to run: JDK 14.01.1 
+*Compile and run Mandelbrot.java to see the image* 
 
 ===Features===
 --Save Image W/ A File Chooser--
